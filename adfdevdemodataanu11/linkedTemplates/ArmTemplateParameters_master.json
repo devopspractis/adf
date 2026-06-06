@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfdevdemodataanu11"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"LSAzureDataLakeStorage_accountKey": {
+			"value": ""
+		},
+		"LS_AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"LS_AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"LS_ON_SqlServer_password": {
+			"value": ""
+		},
+		"LS_SqlServer2_password": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsdevbank001anu.dfs.core.windows.net/"
+		},
+		"LSAzureDataLakeStorage_properties_typeProperties_url": {
+			"value": "https://adlsdevbulkloadanu.dfs.core.windows.net/"
+		},
+		"LS_AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsdevbank001anu.dfs.core.windows.net/"
+		},
+		"LS_ON_SqlServer_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_ON_SqlServer_properties_typeProperties_database": {
+			"value": "visonsp"
+		},
+		"LS_ON_SqlServer_properties_typeProperties_userName": {
+			"value": "testuser"
+		},
+		"LS_RestService_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"LS_SqlServer2_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SqlServer2_properties_typeProperties_database": {
+			"value": "vbadproject"
+		},
+		"LS_SqlServer2_properties_typeProperties_userName": {
+			"value": "testuser"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "vbadproject"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "testuser"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
