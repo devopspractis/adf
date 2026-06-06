@@ -1,0 +1,52 @@
+{
+	"name": "pipeline2_SP",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[audit].[loadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": "",
+							"type": "String"
+						},
+						"errorid": {
+							"value": "",
+							"type": "String"
+						},
+						"errormessage": {
+							"value": "",
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": "",
+							"type": "String"
+						},
+						"TableName": {
+							"value": "",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_ON_SqlServer",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-06-03T08:52:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

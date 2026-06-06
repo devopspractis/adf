@@ -1,0 +1,125 @@
+{
+	"name": "pipeline_SQL_COPY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data_SQL_SERVER",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy data_SQL_SERVER",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[audit].[loadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": {
+								"value": "@string(activity('Copy data_SQL_SERVER').output.rowsRead)",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"errorid": {
+							"value": null,
+							"type": "String"
+						},
+						"errormessage": {
+							"value": null,
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": {
+								"value": "@activity('Copy data_SQL_SERVER').Status",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"TableName": {
+							"value": {
+								"value": "@pipeline().parameters.Tablename",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_ON_SqlServer",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"Tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-06-04T07:21:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

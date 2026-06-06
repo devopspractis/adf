@@ -1,0 +1,21 @@
+{
+	"name": "LS_SqlServer2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "localhost\\SQLEXPRESS",
+			"database": "vbadproject",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "testuser",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZDQyMDlmMi1lNTg5LTQzNjAtOGIzNy03Y2U5N2Y0M2VkNmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime2",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
